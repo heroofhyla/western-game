@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shadow_cowboy.png-ad90fb3cb54a5fd6053e9652d0425797.stex"
+path="res://.import/clay_pot.png-f3e093d158faebca7574103196deaa35.stex"
 
 [deps]
 
-source_file="res://Sprites/shadow_cowboy.png"
-source_md5="601786dac259fc96ae4f4e2591691da2"
+source_file="res://Sprites/clay_pot.png"
+source_md5="2ba74c4f486753b59de47d3dcd8dc461"
 
-dest_files=[ "res://.import/shadow_cowboy.png-ad90fb3cb54a5fd6053e9652d0425797.stex" ]
-dest_md5="9aaa0819c82d47ca71e070afa621922d"
+dest_files=[ "res://.import/clay_pot.png-f3e093d158faebca7574103196deaa35.stex" ]
+dest_md5="fe93b2d4851dc4b22ec2b791ea7badea"
 
 [params]
 
