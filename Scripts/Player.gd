@@ -27,6 +27,9 @@ func _physics_process(delta):
 			velocity.y -= JUMP_SPEED
 			on_floor = false
 	
+	if Input.is_action_just_released("jump"):
+		if velocity.y < - 50:
+			velocity.y /= 2
 	velocity.y += GRAVITY * delta
 
 	input = input.normalized() * SPEED
