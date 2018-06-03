@@ -80,6 +80,9 @@ func _physics_process(delta):
 	if on_floor and state == "jump":
 		state = "stand"
 	
+	if state == "run" and not on_floor:
+		state = "jump"
+	
 	if Input.is_action_just_pressed("jump"):
 		if on_floor and can_move():
 			state = "jump"

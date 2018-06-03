@@ -11,7 +11,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 12, 24 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=2]
 
 resource_name = "JumpLeft"
 length = 0.01
@@ -54,7 +54,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 
 resource_name = "JumpRight"
 length = 0.01
@@ -97,7 +97,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 resource_name = "PunchLeft"
 length = 0.25
@@ -152,7 +152,7 @@ tracks/3/keys = {
 "values": [ Vector2( -12, -9 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 
 resource_name = "PunchRight"
 length = 0.25
@@ -207,7 +207,7 @@ tracks/3/keys = {
 "values": [ Vector2( 12, -9 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 
 resource_name = "RunLeft"
 length = 0.6
@@ -250,7 +250,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 
 resource_name = "RunRight"
 length = 0.6
@@ -293,9 +293,8 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
-resource_name = "StandLeft"
 length = 0.01
 loop = false
 step = 0.1
@@ -336,9 +335,8 @@ tracks/2/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=9]
 
-resource_name = "StandRight"
 length = 0.01
 loop = false
 step = 0.1
@@ -379,7 +377,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 4 )
@@ -442,14 +440,14 @@ autoplay = "StandRight"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/JumpLeft = SubResource( 10 )
-anims/JumpRight = SubResource( 11 )
-anims/PunchLeft = SubResource( 5 )
-anims/PunchRight = SubResource( 6 )
-anims/RunLeft = SubResource( 8 )
-anims/RunRight = SubResource( 9 )
-anims/StandLeft = SubResource( 7 )
-anims/StandRight = SubResource( 2 )
+anims/JumpLeft = SubResource( 2 )
+anims/JumpRight = SubResource( 3 )
+anims/PunchLeft = SubResource( 4 )
+anims/PunchRight = SubResource( 5 )
+anims/RunLeft = SubResource( 6 )
+anims/RunRight = SubResource( 7 )
+anims/StandLeft = SubResource( 8 )
+anims/StandRight = SubResource( 9 )
 blend_times = [  ]
 
 [node name="Sprite" type="Sprite" parent="Player" index="3"]
@@ -481,7 +479,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PunchBox" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 10 )
 disabled = true
 _sections_unfolded = [ "Transform" ]
 
