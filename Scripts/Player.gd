@@ -140,3 +140,8 @@ func _physics_process(delta):
 	
 	if velocity.y > 15:
 		on_floor = false
+
+
+func _on_ReceiveDamage_area_entered(area):
+	if area.is_in_group("damage_from_enemy"):
+		print("OUCH!")

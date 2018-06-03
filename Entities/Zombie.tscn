@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Zombie.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/zombie.png" type="Texture" id=2]
@@ -38,6 +38,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("DealDamage:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -11, -6 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -69,11 +81,28 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("DealDamage:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11, -6 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 24 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6, 6 )
 
 [node name="Zombie" type="KinematicBody2D"]
 
@@ -110,7 +139,7 @@ anims/WalkLeft = SubResource( 2 )
 anims/WalkRight = SubResource( 3 )
 blend_times = [  ]
 
-[node name="Area2D" type="Area2D" parent="." index="3"]
+[node name="ReceiveDamage" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -120,10 +149,29 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReceiveDamage" index="0"]
 
 shape = SubResource( 4 )
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[node name="DealDamage" type="Area2D" parent="." index="4" groups=[
+"damage_from_enemy",
+]]
+
+position = Vector2( -11, -6 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamage" index="0"]
+
+shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="area_entered" from="ReceiveDamage" to="." method="_on_Area2D_area_entered"]
 
 

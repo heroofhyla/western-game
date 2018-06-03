@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/shadow_cowboy.png" type="Texture" id=2]
@@ -493,7 +493,12 @@ tracks/2/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 10, 4 )
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=14]
+
+custom_solver_bias = 0.0
+extents = Vector2( 12, 24 )
+
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -596,5 +601,21 @@ __meta__ = {
 shape = SubResource( 12 )
 disabled = true
 _sections_unfolded = [ "Transform" ]
+
+[node name="ReceiveDamage" type="Area2D" parent="." index="5"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReceiveDamage" index="0"]
+
+shape = SubResource( 14 )
+
+[connection signal="area_entered" from="ReceiveDamage" to="." method="_on_ReceiveDamage_area_entered"]
 
 
