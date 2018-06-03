@@ -6,6 +6,7 @@ extends KinematicBody2D
 export var SPEED = 100
 export var JUMP_SPEED = 200
 export var GRAVITY = 300
+var BULLET = load("res://Entities/Bullet.tscn")
 var input = Vector2()
 var velocity = Vector2()
 var up = Vector2(0,-1)
@@ -32,6 +33,10 @@ var animations = {
 	"jump":{
 		-1:"JumpLeft",
 		1:"JumpRight"
+	},
+	"shoot":{
+		-1: "ShootLeft",
+		1: "ShootRight"
 	}
 }
 
@@ -49,7 +54,15 @@ func can_move():
 	return (state == "stand"
 	    or  state == "run"
 		or  state == "jump"
-		or  state == "punch" and not on_floor)
+		or  state == "punch" and not on_floor
+		or  state == "shoot" and not on_floor)
+
+func fire():
+	var bullet = BULLET.instance()
+	bullet.position.x = self.position.x + facing * 20
+	bullet.position.y = self.position.y - 12
+	bullet.DIRECTION = self.facing
+	get_parent().add_child(bullet)
 
 func _physics_process(delta):
 	i += 1
@@ -94,6 +107,11 @@ func _physics_process(delta):
 			next_state = old_state
 			state = "punch"
 
+	if Input.is_action_just_pressed("shoot"):
+		if can_punch():
+			next_state = old_state
+			state = "shoot"
+	
 	if Input.is_action_just_released("jump"):
 		if velocity.y < - 50:
 			velocity.y /= 2

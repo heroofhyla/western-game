@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shadow_cowboy.png-ad90fb3cb54a5fd6053e9652d0425797.stex"
+path="res://.import/bullet.png-6b56c7898a9b46a3c3db58585f0f8e0d.stex"
 
 [deps]
 
-source_file="res://Sprites/shadow_cowboy.png"
-source_md5="16b4ec4e0a8732e5673c10cf7cf7d51b"
+source_file="res://Sprites/bullet.png"
+source_md5="2c5fa5cc345f513d5e24362b2a9e80bb"
 
-dest_files=[ "res://.import/shadow_cowboy.png-ad90fb3cb54a5fd6053e9652d0425797.stex" ]
-dest_md5="e0ba56a69559d368831c148d05a7876d"
+dest_files=[ "res://.import/bullet.png-6b56c7898a9b46a3c3db58585f0f8e0d.stex" ]
+dest_md5="3a5ffeb3d11862231a314757ff5e89dc"
 
 [params]
 
