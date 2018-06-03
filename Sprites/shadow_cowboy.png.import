@@ -7,10 +7,10 @@ path="res://.import/shadow_cowboy.png-ad90fb3cb54a5fd6053e9652d0425797.stex"
 [deps]
 
 source_file="res://Sprites/shadow_cowboy.png"
-source_md5="601786dac259fc96ae4f4e2591691da2"
+source_md5="df682f98c8be01b872c1dee5b88306af"
 
 dest_files=[ "res://.import/shadow_cowboy.png-ad90fb3cb54a5fd6053e9652d0425797.stex" ]
-dest_md5="9aaa0819c82d47ca71e070afa621922d"
+dest_md5="a6f28a3471891d0f7f94ff09710ae047"
 
 [params]
 

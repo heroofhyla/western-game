@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/shadow_cowboy.png" type="Texture" id=2]
@@ -10,10 +10,10 @@
 custom_solver_bias = 0.0
 extents = Vector2( 12, 24 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
 
-resource_name = "PunchLeft"
-length = 0.25
+resource_name = "JumpLeft"
+length = 0.01
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -26,7 +26,93 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1 ]
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PunchBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+
+resource_name = "JumpRight"
+length = 0.01
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PunchBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "PunchLeft"
+length = 0.25
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("PunchBox/CollisionShape2D:disabled")
@@ -64,18 +150,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( -12, -9 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:can_move")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
 
 [sub_resource type="Animation" id=6]
 
@@ -85,15 +159,15 @@ loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("PunchBox/CollisionShape2D:disabled")
@@ -131,17 +205,91 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 12, -9 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:can_move")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "RunLeft"
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PunchBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+
+resource_name = "RunRight"
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PunchBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -246,9 +394,8 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 SPEED = 100
-JUMP_SPEED = 200
+JUMP_SPEED = 250
 GRAVITY = 300
-can_move = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="0"]
 
@@ -293,25 +440,31 @@ autoplay = "StandRight"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
+anims/JumpLeft = SubResource( 10 )
+anims/JumpRight = SubResource( 11 )
 anims/PunchLeft = SubResource( 5 )
 anims/PunchRight = SubResource( 6 )
+anims/RunLeft = SubResource( 8 )
+anims/RunRight = SubResource( 9 )
 anims/StandLeft = SubResource( 7 )
 anims/StandRight = SubResource( 2 )
 blend_times = [  ]
 
 [node name="Sprite" type="Sprite" parent="Player" index="3"]
 
+scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 4, -2 )
 vframes = 2
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+hframes = 2
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="PunchBox" type="Area2D" parent="Player" index="4"]
 
-position = Vector2( 12, -9 )
+position = Vector2( -12, -9 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
