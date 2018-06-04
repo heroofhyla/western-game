@@ -38,6 +38,10 @@ var animations = {
 	"shoot":{
 		-1: "ShootLeft",
 		1: "ShootRight"
+	},
+	"recoil":{
+		-1: "JumpLeft",
+		1: "JumpRight"
 	}
 }
 
@@ -130,7 +134,7 @@ func _physics_process(delta):
 	if velocity.x > MAX_WALK_SPEED:
 		velocity.x = MAX_WALK_SPEED
 	
-	if state != "run" and state != "jump" && velocity.x != 0:
+	if state != "run" and state != "jump" and state != "recoil" and  velocity.x != 0:
 		if velocity.x > 0:
 			velocity.x -= WALK_ACCELERATION * delta
 			if velocity.x < 0:
@@ -141,14 +145,8 @@ func _physics_process(delta):
 				velocity.x = 0
 	velocity = move_and_slide(velocity, up)
 	
-	if $AnimationPlayer.current_animation != animations[state][facing] and next_state and state == old_state:
-		state = next_state
-		next_state = null
+	handle_states()
 
-	if state != old_state or facing != old_facing:
-		$AnimationPlayer.play(animations[state][facing])
-		if next_state:
-			$AnimationPlayer.queue(animations[next_state][facing])
 
 	
 	# Working around some weirdness with the built-in is_on_floor function.
@@ -158,7 +156,20 @@ func _physics_process(delta):
 	if velocity.y > 15:
 		on_floor = false
 
+func handle_states():
+	if $AnimationPlayer.current_animation != animations[state][facing] and next_state and state == old_state:
+		state = next_state
+		next_state = null
+
+	if state != old_state or facing != old_facing:
+		$AnimationPlayer.play(animations[state][facing])
+		if next_state:
+			$AnimationPlayer.queue(animations[next_state][facing])
 
 func _on_ReceiveDamage_area_entered(area):
 	if area.is_in_group("damage_from_enemy"):
 		print("OUCH!")
+		velocity.x = facing * -1 * 100
+		state = "recoil"
+		next_state = "stand"
+		handle_states()
