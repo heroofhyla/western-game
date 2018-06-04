@@ -506,7 +506,8 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
-SPEED = 100
+MAX_WALK_SPEED = 100
+WALK_ACCELERATION = 600
 JUMP_SPEED = 250
 GRAVITY = 300
 

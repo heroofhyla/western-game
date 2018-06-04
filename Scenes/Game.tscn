@@ -9,6 +9,9 @@
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
+MAX_WALK_SPEED = 100
+WALK_ACCELERATION = 600
+
 [node name="TileMap" type="TileMap" parent="." index="1"]
 
 mode = 0

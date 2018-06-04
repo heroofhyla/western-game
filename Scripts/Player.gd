@@ -3,7 +3,8 @@ extends KinematicBody2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-export var SPEED = 100
+export var MAX_WALK_SPEED = 100
+export var WALK_ACCELERATION = 600
 export var JUMP_SPEED = 200
 export var GRAVITY = 300
 var BULLET = load("res://Entities/Bullet.tscn")
@@ -120,8 +121,24 @@ func _physics_process(delta):
 		print(state + "=>" + str(next_state))
 	
 	velocity.y += GRAVITY * delta
-	input = input.normalized() * SPEED
-	velocity.x = input.x
+	input = input.normalized()
+	velocity.x += input.x * WALK_ACCELERATION * delta
+
+	if velocity.x < -MAX_WALK_SPEED:
+		velocity.x = -MAX_WALK_SPEED
+	
+	if velocity.x > MAX_WALK_SPEED:
+		velocity.x = MAX_WALK_SPEED
+	
+	if state != "run" and state != "jump" && velocity.x != 0:
+		if velocity.x > 0:
+			velocity.x -= WALK_ACCELERATION * delta
+			if velocity.x < 0:
+				velocity.x = 0
+		else:
+			velocity.x += WALK_ACCELERATION * delta
+			if velocity.x > 0:
+				velocity.x = 0
 	velocity = move_and_slide(velocity, up)
 	
 	if $AnimationPlayer.current_animation != animations[state][facing] and next_state and state == old_state:
