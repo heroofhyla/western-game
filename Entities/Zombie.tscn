@@ -39,7 +39,7 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("DealDamage:position")
+tracks/2/path = NodePath("HandDamage:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -82,7 +82,7 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("DealDamage:position")
+tracks/2/path = NodePath("HandDamage:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -97,21 +97,21 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 24 )
+extents = Vector2( 12, 24 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 6, 6 )
 
-[node name="Zombie" type="KinematicBody2D"]
+[node name="Zombie" type="KinematicBody2D" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
 facing = -1
 SPEED = 25
 
@@ -139,7 +139,9 @@ anims/WalkLeft = SubResource( 2 )
 anims/WalkRight = SubResource( 3 )
 blend_times = [  ]
 
-[node name="ReceiveDamage" type="Area2D" parent="." index="3"]
+[node name="BodyDamage" type="Area2D" parent="." index="3" groups=[
+"damage_from_enemy",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -149,11 +151,11 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ReceiveDamage" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyDamage" index="0"]
 
 shape = SubResource( 4 )
 
-[node name="DealDamage" type="Area2D" parent="." index="4" groups=[
+[node name="HandDamage" type="Area2D" parent="." index="4" groups=[
 "damage_from_enemy",
 ]]
 
@@ -167,11 +169,11 @@ audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamage" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandDamage" index="0"]
 
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[connection signal="area_entered" from="ReceiveDamage" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="BodyDamage" to="." method="_on_Area2D_area_entered"]
 
 

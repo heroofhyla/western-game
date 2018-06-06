@@ -290,7 +290,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=8]
 
 resource_name = "ShootLeft"
 length = 0.5
@@ -493,15 +493,15 @@ tracks/2/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 10, 4 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=13]
 
 custom_solver_bias = 0.0
 extents = Vector2( 12, 24 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
@@ -561,7 +561,7 @@ anims/PunchLeft = SubResource( 4 )
 anims/PunchRight = SubResource( 5 )
 anims/RunLeft = SubResource( 6 )
 anims/RunRight = SubResource( 7 )
-anims/ShootLeft = SubResource( 13 )
+anims/ShootLeft = SubResource( 8 )
 anims/ShootRight = SubResource( 9 )
 anims/StandLeft = SubResource( 10 )
 anims/StandRight = SubResource( 11 )
@@ -615,7 +615,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReceiveDamage" index="0"]
 
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 
 [connection signal="area_entered" from="ReceiveDamage" to="." method="_on_ReceiveDamage_area_entered"]
 
