@@ -40,8 +40,8 @@ var animations = {
 		1: "ShootRight"
 	},
 	"recoil":{
-		-1: "JumpLeft",
-		1: "JumpRight"
+		-1: "RecoilLeft",
+		1: "RecoilRight"
 	}
 }
 
@@ -155,7 +155,9 @@ func _physics_process(delta):
 			if velocity.x > 0:
 				velocity.x = 0
 	velocity = move_and_slide(velocity, up)
-	
+
+	if state != "recoil" and $ReceiveDamage/CollisionShape2D.disabled:
+		$ReceiveDamage/CollisionShape2D.disabled = false
 	handle_states()
 
 
@@ -179,8 +181,8 @@ func handle_states():
 
 func _on_ReceiveDamage_area_entered(area):
 	if area.is_in_group("damage_from_enemy"):
-		print("OUCH!")
-		velocity.x = facing * -1 * 100
+		velocity.x = sign(position.x - area.get_parent().position.x) * 100
+		facing = int(sign(velocity.x)) * -1
 		state = "recoil"
 		next_state = "stand"
 		handle_states()
