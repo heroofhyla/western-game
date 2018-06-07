@@ -62,6 +62,10 @@ func can_move():
 		or  state == "punch" and not on_floor
 		or  state == "shoot" and not on_floor)
 
+func can_interact():
+	return (state == "stand"
+	    or  state == "run")
+
 func fire():
 	var bullet = BULLET.instance()
 	bullet.position.x = self.position.x + facing * 20
@@ -124,6 +128,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		print(state + "=>" + str(next_state))
 	
+	if Input.is_action_just_pressed("interact"):
+		if can_interact():	
+			var areas = $ReceiveDamage.get_overlapping_areas()
+			for area in areas:
+				if area.is_in_group("interactables"):
+					area.interact()
+		
 	velocity.y += GRAVITY * delta
 	input = input.normalized()
 	velocity.x += input.x * WALK_ACCELERATION * delta
