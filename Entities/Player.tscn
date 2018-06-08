@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 12, 24 )
+extents = Vector2( 12, 23 )
 
 [sub_resource type="Animation" id=2]
 
@@ -204,7 +204,7 @@ tracks/3/keys = {
 "values": [ Vector2( 12, -9 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 
 resource_name = "RecoilLeft"
 length = 0.25
@@ -259,7 +259,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=7]
 
 resource_name = "RecoilRight"
 length = 0.25
@@ -314,9 +314,8 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 
-resource_name = "RunLeft"
 length = 0.6
 loop = true
 step = 0.1
@@ -357,9 +356,8 @@ tracks/2/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 
-resource_name = "RunRight"
 length = 0.6
 loop = true
 step = 0.1
@@ -400,9 +398,8 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 
-resource_name = "ShootLeft"
 length = 0.5
 loop = false
 step = 0.1
@@ -457,9 +454,8 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 
-resource_name = "ShootRight"
 length = 0.5
 loop = false
 step = 0.1
@@ -514,7 +510,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 
 length = 0.01
 loop = false
@@ -556,7 +552,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 
 length = 0.01
 loop = false
@@ -598,17 +594,17 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 4 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=15]
 
 custom_solver_bias = 0.0
 extents = Vector2( 12, 24 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 2
@@ -623,6 +619,7 @@ GRAVITY = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
+position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -669,14 +666,14 @@ anims/JumpLeft = SubResource( 2 )
 anims/JumpRight = SubResource( 3 )
 anims/PunchLeft = SubResource( 4 )
 anims/PunchRight = SubResource( 5 )
-anims/RecoilLeft = SubResource( 14 )
-anims/RecoilRight = SubResource( 15 )
-anims/RunLeft = SubResource( 6 )
-anims/RunRight = SubResource( 7 )
-anims/ShootLeft = SubResource( 8 )
-anims/ShootRight = SubResource( 9 )
-anims/StandLeft = SubResource( 10 )
-anims/StandRight = SubResource( 11 )
+anims/RecoilLeft = SubResource( 6 )
+anims/RecoilRight = SubResource( 7 )
+anims/RunLeft = SubResource( 8 )
+anims/RunRight = SubResource( 9 )
+anims/ShootLeft = SubResource( 10 )
+anims/ShootRight = SubResource( 11 )
+anims/StandLeft = SubResource( 12 )
+anims/StandRight = SubResource( 13 )
 blend_times = [  ]
 
 [node name="Sprite" type="Sprite" parent="." index="3"]
@@ -711,7 +708,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PunchBox" index="0"]
 
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 disabled = true
 _sections_unfolded = [ "Transform" ]
 
@@ -724,10 +721,12 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReceiveDamage" index="0"]
 
-shape = SubResource( 13 )
+shape = SubResource( 15 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [connection signal="area_entered" from="ReceiveDamage" to="." method="_on_ReceiveDamage_area_entered"]
 

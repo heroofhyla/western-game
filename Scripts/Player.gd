@@ -8,6 +8,7 @@ export var WALK_ACCELERATION = 600
 export var JUMP_SPEED = 200
 export var GRAVITY = 300
 var BULLET = load("res://Entities/Bullet.tscn")
+var DYNAMITE = load("res://Entities/Dynamite.tscn")
 var input = Vector2()
 var velocity = Vector2()
 var up = Vector2(0,-1)
@@ -42,6 +43,10 @@ var animations = {
 	"recoil":{
 		-1: "RecoilLeft",
 		1: "RecoilRight"
+	},
+	"dynamite":{
+		-1: "StandLeft",
+		1: "StandRight"
 	}
 }
 
@@ -54,6 +59,10 @@ func can_punch():
 	return (state == "stand"
 		or  state == "run"
 		or  state == "jump")
+
+func can_dynamite():
+	return (state == "stand"
+	    or  state == "run")
 
 func can_move():
 	return (state == "stand"
@@ -72,6 +81,11 @@ func fire():
 	bullet.position.y = self.position.y - 12
 	bullet.DIRECTION = self.facing
 	get_parent().add_child(bullet)
+
+func dynamite():
+	var dynamite = DYNAMITE.instance()
+	dynamite.position = self.position
+	get_parent().add_child(dynamite)
 
 func _physics_process(delta):
 	i += 1
@@ -124,6 +138,12 @@ func _physics_process(delta):
 	if Input.is_action_just_released("jump"):
 		if velocity.y < - 50:
 			velocity.y /= 2
+	
+	if Input.is_action_just_pressed("dynamite"):
+		if can_dynamite():
+			state = "dynamite"
+			next_state = "stand"
+			dynamite()
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		print(state + "=>" + str(next_state))

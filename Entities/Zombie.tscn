@@ -150,6 +150,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Pickable", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyDamage" index="0"]
 
@@ -167,7 +168,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HandDamage" index="0"]
 
