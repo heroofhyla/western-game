@@ -616,6 +616,8 @@ MAX_WALK_SPEED = 100
 WALK_ACCELERATION = 600
 JUMP_SPEED = 250
 GRAVITY = 300
+hp = 3
+max_hp = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

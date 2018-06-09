@@ -7,6 +7,8 @@ export var MAX_WALK_SPEED = 100
 export var WALK_ACCELERATION = 600
 export var JUMP_SPEED = 200
 export var GRAVITY = 300
+export var hp = 3
+export var max_hp = 3
 var BULLET = load("res://Entities/Bullet.tscn")
 var DYNAMITE = load("res://Entities/Dynamite.tscn")
 var input = Vector2()
@@ -19,6 +21,7 @@ var old_facing = 1
 var old_state = "stand"
 var next_state = null
 var i = 1
+onready var HEARTS = get_node("/root/Root/UI Layer/Hearts")
 var animations = {
 	"stand":{
 		-1: "StandLeft",
@@ -181,7 +184,6 @@ func _physics_process(delta):
 	handle_states()
 
 
-	
 	# Working around some weirdness with the built-in is_on_floor function.
 	if is_on_floor():
 		on_floor = true
@@ -201,8 +203,19 @@ func handle_states():
 
 func _on_ReceiveDamage_area_entered(area):
 	if area.is_in_group("damage_from_enemy"):
+		set_hp(hp - 1)
 		velocity.x = sign(position.x - area.get_parent().position.x) * 100
 		facing = int(sign(velocity.x)) * -1
 		state = "recoil"
 		next_state = "stand"
 		handle_states()
+
+func set_hp(new_hp):
+	hp = new_hp
+	HEARTS.update()
+	if hp == 0:
+		game_over()
+	
+func game_over():
+	print("GAME OVER!")
+	get_tree().quit()
