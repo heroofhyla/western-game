@@ -680,12 +680,10 @@ blend_times = [  ]
 
 [node name="Sprite" type="Sprite" parent="." index="3"]
 
-scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 4, -2 )
 vframes = 3
 hframes = 2
-frame = 3
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
@@ -695,7 +693,7 @@ __meta__ = {
 "damage_from_player",
 ]]
 
-position = Vector2( -12, -9 )
+position = Vector2( 12, -9 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

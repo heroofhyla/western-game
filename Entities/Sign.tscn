@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Sign.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/signboard.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 24, 36 )
+
+[node name="Sign" type="Area2D" groups=[
+"interactables",
+]]
+
+position = Vector2( 312, 84 )
+z_index = -2
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+messages = [ "Press UP to read signs", "Signs can have multiple pages of text", "Text is automatically centered, and long lines are wrapped." ]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
+
+

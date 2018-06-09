@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Sandbag_Platform.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Wood_Platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Rope.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/sandbag.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 16 )
+
+[node name="Sandbag_Platform" type="Node2D"]
+
+position = Vector2( 24, -276 )
+z_index = -2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
+distance = 72
+move_speed = 100
+
+[node name="Wood_Platform" type="KinematicBody2D" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( -24, 156 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Rope" type="Node2D" parent="Wood_Platform" index="2"]
+
+z_index = -1
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Sandbag" type="KinematicBody2D" parent="." index="1"]
+
+position = Vector2( -96, 264 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Rope" type="Node2D" parent="Sandbag" index="0"]
+
+z_index = -1
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="Sandbag" index="1"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sandbag" index="2"]
+
+shape = SubResource( 1 )
+disabled = true
+
+[node name="ReceiveDamage" type="Area2D" parent="Sandbag" index="3"]
+
+position = Vector2( 0, 5 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sandbag/ReceiveDamage" index="0"]
+
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Sandbag/ReceiveDamage" to="." method="_on_ReceiveDamage_area_entered"]
+
+

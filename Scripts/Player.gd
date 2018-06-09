@@ -21,6 +21,10 @@ var old_facing = 1
 var old_state = "stand"
 var next_state = null
 var i = 1
+var has_gun = false
+var has_high_jump = false
+var has_dynamite = false
+
 onready var HEARTS = get_node("/root/Root/UI Layer/Hearts")
 var animations = {
 	"stand":{
@@ -58,14 +62,17 @@ func _ready():
 	# Initialization here
 	pass
 
+func can_shoot():
+	return has_gun and can_punch()
+	
 func can_punch():
 	return (state == "stand"
-		or  state == "run"
-		or  state == "jump")
+	    or  state == "run"
+	    or  state == "jump")
 
 func can_dynamite():
-	return (state == "stand"
-	    or  state == "run")
+	return has_dynamite and (state == "stand"
+	                     or  state == "run")
 
 func can_move():
 	return (state == "stand"
@@ -125,7 +132,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump"):
 		if on_floor and can_move():
 			state = "jump"
-			velocity.y -= JUMP_SPEED
+			if has_high_jump:
+				velocity.y -= 1.5 * JUMP_SPEED
+			else:
+				velocity.y -= JUMP_SPEED
+			
 			on_floor = false
 
 	if Input.is_action_just_pressed("punch"):
@@ -134,7 +145,7 @@ func _physics_process(delta):
 			state = "punch"
 
 	if Input.is_action_just_pressed("shoot"):
-		if can_punch():
+		if can_shoot():
 			next_state = old_state
 			state = "shoot"
 	
@@ -152,10 +163,15 @@ func _physics_process(delta):
 		print(state + "=>" + str(next_state))
 	
 	if Input.is_action_just_pressed("interact"):
+		print("Checking for interaction...")
 		if can_interact():	
+			print("allowed to interact.")
 			var areas = $ReceiveDamage.get_overlapping_areas()
+			print("finding interactables")
 			for area in areas:
+				print("checking " + area.name)
 				if area.is_in_group("interactables"):
+					print("this is interactable.")
 					area.interact()
 		
 	velocity.y += GRAVITY * delta
@@ -168,7 +184,7 @@ func _physics_process(delta):
 	if velocity.x > MAX_WALK_SPEED:
 		velocity.x = MAX_WALK_SPEED
 	
-	if state != "run" and state != "jump" and state != "recoil" and  velocity.x != 0:
+	if state != "run" and on_floor and state != "recoil" and  velocity.x != 0:
 		if velocity.x > 0:
 			velocity.x -= WALK_ACCELERATION * delta
 			if velocity.x < 0:
