@@ -159,19 +159,11 @@ func _physics_process(delta):
 			next_state = "stand"
 			dynamite()
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		print(state + "=>" + str(next_state))
-	
 	if Input.is_action_just_pressed("interact"):
-		print("Checking for interaction...")
 		if can_interact():	
-			print("allowed to interact.")
 			var areas = $ReceiveDamage.get_overlapping_areas()
-			print("finding interactables")
 			for area in areas:
-				print("checking " + area.name)
 				if area.is_in_group("interactables"):
-					print("this is interactable.")
 					area.interact()
 		
 	velocity.y += GRAVITY * delta
