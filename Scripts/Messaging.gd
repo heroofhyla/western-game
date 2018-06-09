@@ -25,7 +25,10 @@ func next_message():
 		get_tree().paused = false
 		state = "idle"
 		return
-	
+	if len(messages) == 1:
+		$MessageStatus.frame = 1
+	else:
+		$MessageStatus.frame = 0
 	$Text.text = messages.pop_front()
 	
 func show_messages(new_messages):
