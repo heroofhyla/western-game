@@ -7,8 +7,8 @@ export var MAX_WALK_SPEED = 100
 export var WALK_ACCELERATION = 600
 export var JUMP_SPEED = 200
 export var GRAVITY = 300
-export var hp = 3
-export var max_hp = 3
+export var hp = 10
+export var max_hp = 10
 var BULLET = load("res://Entities/Bullet.tscn")
 var DYNAMITE = load("res://Entities/Dynamite.tscn")
 var input = Vector2()
@@ -21,9 +21,9 @@ var old_facing = 1
 var old_state = "stand"
 var next_state = null
 var i = 1
-var has_gun = false
+var has_gun = true
 var has_high_jump = false
-var has_dynamite = false
+var has_dynamite = true
 
 onready var HEARTS = get_node("/root/Root/UI Layer/Hearts")
 var animations = {
@@ -87,8 +87,8 @@ func can_interact():
 
 func fire():
 	var bullet = BULLET.instance()
-	bullet.position.x = self.position.x + facing * 20
-	bullet.position.y = self.position.y - 12
+	bullet.position.x = self.position.x + facing * 7
+	bullet.position.y = self.position.y - 2
 	bullet.DIRECTION = self.facing
 	get_parent().add_child(bullet)
 

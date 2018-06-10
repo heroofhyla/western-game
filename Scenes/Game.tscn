@@ -21,9 +21,12 @@ use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node2D" index="0"]
+[node name="Root" type="Node2D"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+hp = 10
+max_hp = 10
 
 [node name="UI Layer" type="ParallaxBackground" parent="." index="1"]
 
