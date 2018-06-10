@@ -24,7 +24,7 @@ var i = 1
 var has_gun = true
 var has_high_jump = false
 var has_dynamite = false
-
+var has_key = false
 onready var HEARTS = get_node("/root/Root/UI Layer/Hearts")
 var animations = {
 	"stand":{
@@ -63,6 +63,8 @@ func acquire(powerup):
 	elif powerup == "max_hp":
 		max_hp += 1
 		set_hp(max_hp)
+	elif powerup == "key":
+		has_key = true
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
