@@ -1,14 +1,11 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+# Draws a rope up from its own position to the position of its
+# parent node.
 var rope_color = Color(.375,.315,.125)
 var black = Color(0,0,0)
 func _ready():
 	set_process(true);
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
 func _draw():
@@ -18,6 +15,3 @@ func _draw():
 func _process(delta):
 	if get_parent().get_parent().state == "moving":
 		update()
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass

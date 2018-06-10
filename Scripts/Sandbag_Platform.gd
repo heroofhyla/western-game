@@ -1,9 +1,9 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
+# Sandbag/Platform system. When the sandbag is shot, the sandbag
+# ascends and the platform ascends by the amount in $distance. 
+# The root node of the system should be at ceiling height so 
+# that the ropes are the right length.
 export var distance = 72
 export var move_speed = 100
 var state = "full"
@@ -11,8 +11,6 @@ onready var initial_height = $Wood_Platform.position.y
 onready var target_height = $Wood_Platform.position.y + distance
 var travel_distance = Vector2()
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
 func _physics_process(delta):
@@ -24,11 +22,6 @@ func _physics_process(delta):
 		else:
 			$Wood_Platform/CollisionShape2D.disabled = false
 			state = "done"
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-
 
 func _on_ReceiveDamage_area_entered(area):
 	if area.is_in_group("bullets"):

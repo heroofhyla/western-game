@@ -1,15 +1,11 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+# Handles the messaging system.
 
 var messages = []
 var state = "idle"
 func _ready():
 	visible = false
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 	
 
@@ -37,8 +33,3 @@ func show_messages(new_messages):
 	next_message()
 	visible = true
 	state = "almost_ready"
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass

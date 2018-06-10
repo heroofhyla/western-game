@@ -1,8 +1,6 @@
 extends KinematicBody2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+# Big messy class that manages the player character.
 export var MAX_WALK_SPEED = 100
 export var WALK_ACCELERATION = 600
 export var JUMP_SPEED = 200
@@ -68,8 +66,6 @@ func acquire(powerup):
 	elif powerup == "hp":
 		set_hp(min(hp + 1, max_hp))
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
 func can_shoot():
