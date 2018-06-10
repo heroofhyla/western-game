@@ -16,7 +16,7 @@ func _physics_process(delta):
 		print(overlaps)
 		for area in overlaps:
 			print("checking " + area.name)
-			if area.get_parent().is_in_group("destructible"):
+			if area.get_parent().is_in_group("destructable"):
 				area.get_parent().queue_free()
 		queue_free()
 		ready_to_explode = false

@@ -7,10 +7,10 @@ path="res://.import/tileset.png-c259079e18121438fd392d302e3ca0d5.stex"
 [deps]
 
 source_file="res://Sprites/tileset.png"
-source_md5="dfb022fb8ee620bca78e95aec852f6a8"
+source_md5="95a51c6fe8b7b0ddc376af1386916c47"
 
 dest_files=[ "res://.import/tileset.png-c259079e18121438fd392d302e3ca0d5.stex" ]
-dest_md5="b7bb5ccea9be8d6a61845c81329b0cfe"
+dest_md5="f52517d4db10f08a0fb46332adc93a42"
 
 [params]
 
