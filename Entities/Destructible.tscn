@@ -12,7 +12,7 @@ extents = Vector2( 24, 24 )
 custom_solver_bias = 0.0
 extents = Vector2( 24, 24 )
 
-[node name="Destructible" type="KinematicBody2D" index="0" groups=[
+[node name="Destructible" type="KinematicBody2D" groups=[
 "destructable",
 ]]
 

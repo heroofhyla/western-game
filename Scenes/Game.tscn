@@ -7,14 +7,14 @@
 [ext_resource path="res://Sprites/message_status.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Hearts.gd" type="Script" id=6]
 [ext_resource path="res://Tileset/tileset.tres" type="TileSet" id=7]
-[ext_resource path="res://Entities/Spider.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Entities/EnemyBlocker.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Entities/Destructible.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Entities/Powerup.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Sprites/max_hp_up.png" type="Texture" id=12]
-[ext_resource path="res://Entities/Gate.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Sprites/key.png" type="Texture" id=14]
-[ext_resource path="res://Entities/Health.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/EnemyBlocker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Destructible.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Powerup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sprites/max_hp_up.png" type="Texture" id=11]
+[ext_resource path="res://Entities/Gate.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Health.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Jailor.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Spider.tscn" type="PackedScene" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -24,11 +24,11 @@ use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node2D"]
+[node name="Root" type="Node2D" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 48, 16 )
+position = Vector2( 328, 128 )
 JUMP_SPEED = 200
 hp = 3
 max_hp = 3
@@ -142,121 +142,56 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Spider" parent="World" index="1" instance=ExtResource( 8 )]
-
-position = Vector2( 168, 448 )
-facing = 1
-
-[node name="EnemyBlocker" parent="World" index="2" instance=ExtResource( 9 )]
+[node name="EnemyBlocker" parent="World" index="1" instance=ExtResource( 8 )]
 
 position = Vector2( -136, 376 )
 
-[node name="EnemyBlocker2" parent="World" index="3" instance=ExtResource( 9 )]
+[node name="EnemyBlocker2" parent="World" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( -248, 376 )
 
-[node name="Destructible" parent="World" index="4" instance=ExtResource( 10 )]
+[node name="Destructible" parent="World" index="3" instance=ExtResource( 9 )]
 
 position = Vector2( -504, 344 )
 
-[node name="Destructible2" parent="World" index="5" instance=ExtResource( 10 )]
+[node name="Destructible2" parent="World" index="4" instance=ExtResource( 9 )]
 
 position = Vector2( -296, 152 )
 
-[node name="Destructible3" parent="World" index="6" instance=ExtResource( 10 )]
+[node name="Destructible3" parent="World" index="5" instance=ExtResource( 9 )]
 
 position = Vector2( 472, 392 )
 
-[node name="Spider2" parent="World" index="7" instance=ExtResource( 8 )]
-
-position = Vector2( -192, 368 )
-
-[node name="EnemyBlocker3" parent="World" index="8" instance=ExtResource( 9 )]
+[node name="EnemyBlocker3" parent="World" index="6" instance=ExtResource( 8 )]
 
 position = Vector2( 920, 280 )
 
-[node name="EnemyBlocker4" parent="World" index="9" instance=ExtResource( 9 )]
+[node name="EnemyBlocker4" parent="World" index="7" instance=ExtResource( 8 )]
 
 position = Vector2( 824, 280 )
 
-[node name="EnemyBlocker5" parent="World" index="10" instance=ExtResource( 9 )]
+[node name="EnemyBlocker5" parent="World" index="8" instance=ExtResource( 8 )]
 
 position = Vector2( 968, 392 )
 
-[node name="EnemyBlocker6" parent="World" index="11" instance=ExtResource( 9 )]
+[node name="EnemyBlocker6" parent="World" index="9" instance=ExtResource( 8 )]
 
 position = Vector2( 1048, 392 )
 
-[node name="Spider3" parent="World" index="12" instance=ExtResource( 8 )]
-
-position = Vector2( 880, 496 )
-
-[node name="Spider4" parent="World" index="13" instance=ExtResource( 8 )]
-
-position = Vector2( 1048, 496 )
-
-[node name="Spider5" parent="World" index="14" instance=ExtResource( 8 )]
-
-position = Vector2( 1016, 384 )
-
-[node name="Spider6" parent="World" index="15" instance=ExtResource( 8 )]
-
-position = Vector2( 880, 272 )
-
-[node name="Spider7" parent="World" index="16" instance=ExtResource( 8 )]
-
-position = Vector2( 976, 496 )
-
-[node name="Spider8" parent="World" index="17" instance=ExtResource( 8 )]
-
-position = Vector2( 832, 496 )
-
-[node name="Spider9" parent="World" index="18" instance=ExtResource( 8 )]
-
-position = Vector2( 928, 496 )
-
-[node name="Spider10" parent="World" index="19" instance=ExtResource( 8 )]
-
-position = Vector2( 648, 448 )
-
-[node name="Spider11" parent="World" index="20" instance=ExtResource( 8 )]
-
-position = Vector2( 584, 448 )
-
-[node name="Spider12" parent="World" index="21" instance=ExtResource( 8 )]
-
-position = Vector2( 592, 288 )
-
-[node name="Spider13" parent="World" index="22" instance=ExtResource( 8 )]
-
-position = Vector2( 688, 288 )
-
-[node name="EnemyBlocker7" parent="World" index="23" instance=ExtResource( 9 )]
+[node name="EnemyBlocker7" parent="World" index="10" instance=ExtResource( 8 )]
 
 position = Vector2( 760, 296 )
 
-[node name="Destructible4" parent="World" index="24" instance=ExtResource( 10 )]
+[node name="Destructible4" parent="World" index="11" instance=ExtResource( 9 )]
 
 position = Vector2( 200, 248 )
 
-[node name="Spider14" parent="World" index="25" instance=ExtResource( 8 )]
-
-position = Vector2( -160, 448 )
-
-[node name="Spider15" parent="World" index="26" instance=ExtResource( 8 )]
-
-position = Vector2( -288, 448 )
-
-[node name="Spider16" parent="World" index="27" instance=ExtResource( 8 )]
-
-position = Vector2( -416, 400 )
-
-[node name="UnlockDynamite" parent="World" index="28" instance=ExtResource( 11 )]
+[node name="UnlockDynamite" parent="World" index="12" instance=ExtResource( 10 )]
 
 position = Vector2( -448, 552 )
 message = [ "Dynamite acquired.", "While on the ground, press [S] to lay dynamite." ]
 
-[node name="MaxHP" parent="World" index="29" instance=ExtResource( 11 )]
+[node name="MaxHP" parent="World" index="13" instance=ExtResource( 10 )]
 
 position = Vector2( 312, 256 )
 unlock = "max_hp"
@@ -264,9 +199,9 @@ message = [ "Max HP increased." ]
 
 [node name="Sprite" parent="World/MaxHP" index="0"]
 
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
-[node name="MaxHP2" parent="World" index="30" instance=ExtResource( 11 )]
+[node name="MaxHP2" parent="World" index="14" instance=ExtResource( 10 )]
 
 position = Vector2( -56, -144 )
 unlock = "max_hp"
@@ -274,37 +209,98 @@ message = [ "Max HP increased." ]
 
 [node name="Sprite" parent="World/MaxHP2" index="0"]
 
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
-[node name="Destructible5" parent="World" index="31" instance=ExtResource( 10 )]
+[node name="Destructible5" parent="World" index="15" instance=ExtResource( 9 )]
 
 position = Vector2( 440, 8 )
 
-[node name="Gate" parent="World" index="32" instance=ExtResource( 13 )]
+[node name="Gate" parent="World" index="16" instance=ExtResource( 12 )]
 
-[node name="Powerup" parent="World" index="33" instance=ExtResource( 11 )]
-
-position = Vector2( 728, -328 )
-unlock = "key"
-message = [ "Prison key acquired.", "Cell doors will automatically open when you approach." ]
-
-[node name="Sprite" parent="World/Powerup" index="0"]
-
-texture = ExtResource( 14 )
-
-[node name="Gate2" parent="World" index="34" instance=ExtResource( 13 )]
+[node name="Gate2" parent="World" index="17" instance=ExtResource( 12 )]
 
 position = Vector2( 456, -128 )
 
-[node name="Gate3" parent="World" index="35" instance=ExtResource( 13 )]
+[node name="Gate3" parent="World" index="18" instance=ExtResource( 12 )]
 
 position = Vector2( 56, -128 )
 
-[node name="Powerup2" parent="World" index="36" instance=ExtResource( 15 )]
+[node name="Powerup2" parent="World" index="19" instance=ExtResource( 13 )]
 
 position = Vector2( -184, 16 )
+
+[node name="Jailor" parent="World" index="20" instance=ExtResource( 14 )]
+
+position = Vector2( 672, -336 )
+
+[node name="Spider3" parent="World" index="21" instance=ExtResource( 15 )]
+
+position = Vector2( 584, 288 )
+
+[node name="Spider4" parent="World" index="22" instance=ExtResource( 15 )]
+
+position = Vector2( 680, 288 )
+
+[node name="Spider" parent="World" index="23" instance=ExtResource( 15 )]
+
+position = Vector2( 552, 448 )
+
+[node name="Spider2" parent="World" index="24" instance=ExtResource( 15 )]
+
+position = Vector2( 608, 448 )
+
+[node name="Spider5" parent="World" index="25" instance=ExtResource( 15 )]
+
+position = Vector2( 896, 496 )
+
+[node name="Spider6" parent="World" index="26" instance=ExtResource( 15 )]
+
+position = Vector2( 1048, 496 )
+
+[node name="Spider7" parent="World" index="27" instance=ExtResource( 15 )]
+
+position = Vector2( 968, 496 )
+
+[node name="Spider8" parent="World" index="28" instance=ExtResource( 15 )]
+
+position = Vector2( 832, 496 )
+
+[node name="Spider9" parent="World" index="29" instance=ExtResource( 15 )]
+
+position = Vector2( 1104, 496 )
+
+[node name="Spider10" parent="World" index="30" instance=ExtResource( 15 )]
+
+position = Vector2( 1016, 384 )
+
+[node name="Spider11" parent="World" index="31" instance=ExtResource( 15 )]
+
+position = Vector2( 872, 272 )
+
+[node name="Spider12" parent="World" index="32" instance=ExtResource( 15 )]
+
+position = Vector2( 192, 448 )
+
+[node name="Spider13" parent="World" index="33" instance=ExtResource( 15 )]
+
+position = Vector2( -200, 368 )
+
+[node name="Spider14" parent="World" index="34" instance=ExtResource( 15 )]
+
+position = Vector2( -264, 448 )
+
+[node name="Spider15" parent="World" index="35" instance=ExtResource( 15 )]
+
+position = Vector2( -144, 448 )
+
+[node name="Spider16" parent="World" index="36" instance=ExtResource( 15 )]
+
+position = Vector2( -568, 560 )
+
+[node name="Spider17" parent="World" index="37" instance=ExtResource( 15 )]
+
+position = Vector2( -432, 400 )
 
 
 [editable path="World/MaxHP"]
 [editable path="World/MaxHP2"]
-[editable path="World/Powerup"]

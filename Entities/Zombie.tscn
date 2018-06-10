@@ -112,8 +112,12 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
+hp = 5
 facing = -1
 SPEED = 25
+state = "walk"
+DROP_ENTITY_PATH = ""
+DROP_CHANCE = 100
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

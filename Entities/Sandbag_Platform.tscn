@@ -24,17 +24,10 @@ _sections_unfolded = [ "Z Index" ]
 distance = 72
 move_speed = 100
 
-[node name="Wood_Platform" type="KinematicBody2D" parent="." index="0" instance=ExtResource( 2 )]
+[node name="Wood_Platform" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( -24, 156 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Rope" type="Node2D" parent="Wood_Platform" index="2"]
 
