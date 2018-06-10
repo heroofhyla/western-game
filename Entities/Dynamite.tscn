@@ -81,7 +81,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[node name="Dynamite" type="Area2D" index="0"]
+[node name="Dynamite" type="Area2D"]
 
 z_index = -2
 input_pickable = true

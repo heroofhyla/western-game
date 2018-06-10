@@ -60,6 +60,9 @@ var animations = {
 func acquire(powerup):
 	if powerup == "dynamite":
 		has_dynamite = true
+	elif powerup == "max_hp":
+		max_hp += 1
+		set_hp(max_hp)
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here

@@ -1,7 +1,7 @@
 extends Area2D
 
 export var unlock = "dynamite"
-export var message = ["Dynamite acquired.", "Press [S] while on the ground to lay dynamite."]
+export(Array) var message
 onready var MESSAGING = get_node("/root/Root/UI Layer/Messaging")
 onready var PLAYER = get_node("/root/Root/Player")
 # class member variables go here, for example:
@@ -9,6 +9,11 @@ onready var PLAYER = get_node("/root/Root/Player")
 # var b = "textvar"
 
 func _ready():
+	if message == null:
+		message = []
+		
+	print("Initializing powerup " + name)
+	print("Messages: " + str(message))
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
