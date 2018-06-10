@@ -9,18 +9,20 @@ onready var PLAYER = get_node("/root/Root/Player")
 # var b = "textvar"
 
 func _ready():
+	# Message has to be initialized here, not up above
+	# Otherwise, every powerup gets access to the same
+	# array.
 	if message == null:
 		message = []
 		
-	print("Initializing powerup " + name)
-	print("Messages: " + str(message))
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 
 func acquire():
 	PLAYER.acquire(unlock)
-	MESSAGING.show_messages(message)
+	if len(message) > 0:
+		MESSAGING.show_messages(message)
 	
 	queue_free()
 #func _process(delta):

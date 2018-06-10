@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Powerup.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/dynamite_unlit.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/small_heart.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 16 )
+extents = Vector2( 8, 8 )
 
-[node name="Powerup" type="Area2D" index="0"]
+[node name="Powerup" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -18,7 +18,8 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-unlock = "dynamite"
+_sections_unfolded = [ "Audio Bus", "Collision" ]
+unlock = "hp"
 message = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -27,7 +28,6 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0, 4 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 

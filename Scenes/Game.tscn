@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Messaging.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Sprites/max_hp_up.png" type="Texture" id=12]
 [ext_resource path="res://Entities/Gate.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Sprites/key.png" type="Texture" id=14]
+[ext_resource path="res://Entities/Health.tscn" type="PackedScene" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -23,11 +24,11 @@ use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Root" type="Node2D" index="0"]
+[node name="Root" type="Node2D"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 0, 8 )
+position = Vector2( 48, 16 )
 JUMP_SPEED = 200
 hp = 3
 max_hp = 3
@@ -298,6 +299,10 @@ position = Vector2( 456, -128 )
 [node name="Gate3" parent="World" index="35" instance=ExtResource( 13 )]
 
 position = Vector2( 56, -128 )
+
+[node name="Powerup2" parent="World" index="36" instance=ExtResource( 15 )]
+
+position = Vector2( -184, 16 )
 
 
 [editable path="World/MaxHP"]

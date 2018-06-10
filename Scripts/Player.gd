@@ -7,8 +7,8 @@ export var MAX_WALK_SPEED = 100
 export var WALK_ACCELERATION = 600
 export var JUMP_SPEED = 200
 export var GRAVITY = 300
-export var hp = 10
-export var max_hp = 10
+export var hp = 12
+export var max_hp = 12
 var BULLET = load("res://Entities/Bullet.tscn")
 var DYNAMITE = load("res://Entities/Dynamite.tscn")
 var input = Vector2()
@@ -65,6 +65,8 @@ func acquire(powerup):
 		set_hp(max_hp)
 	elif powerup == "key":
 		has_key = true
+	elif powerup == "hp":
+		set_hp(min(hp + 1, max_hp))
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here

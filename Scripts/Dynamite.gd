@@ -11,16 +11,13 @@ func _ready():
 
 func _physics_process(delta):
 	if ready_to_explode:
-		print("ready to explode.")
 		var overlaps = get_overlapping_areas()
-		print(overlaps)
 		for area in overlaps:
-			print("checking " + area.name)
 			if area.get_parent().is_in_group("destructable"):
 				area.get_parent().queue_free()
 		ready_to_explode = false
 func explode():
-	position=position
+	#position=position
 	ready_to_explode = true
 	
 #func _process(delta):
