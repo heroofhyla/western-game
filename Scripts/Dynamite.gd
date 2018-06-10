@@ -18,7 +18,6 @@ func _physics_process(delta):
 			print("checking " + area.name)
 			if area.get_parent().is_in_group("destructable"):
 				area.get_parent().queue_free()
-		queue_free()
 		ready_to_explode = false
 func explode():
 	position=position

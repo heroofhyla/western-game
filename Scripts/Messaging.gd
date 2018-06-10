@@ -14,7 +14,7 @@ func _ready():
 	
 
 func _process(delta):
-	if Input.is_action_just_pressed("interact") and visible and state == "ready":
+	if Input.is_action_just_pressed("continue_message") and visible and state == "ready":
 		next_message()
 	if state == "almost_ready":
 		state = "ready"

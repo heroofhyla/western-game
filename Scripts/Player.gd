@@ -23,7 +23,7 @@ var next_state = null
 var i = 1
 var has_gun = true
 var has_high_jump = false
-var has_dynamite = true
+var has_dynamite = false
 
 onready var HEARTS = get_node("/root/Root/UI Layer/Hearts")
 var animations = {
@@ -57,6 +57,9 @@ var animations = {
 	}
 }
 
+func acquire(powerup):
+	if powerup == "dynamite":
+		has_dynamite = true
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here

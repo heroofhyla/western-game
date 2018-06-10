@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-117fa22eec6d05fc38563d3488e6823e.stex"
+path="res://.import/dynamite_unlit.png-a88246a7bf638772ebc4849f5624d513.stex"
 
 [deps]
 
-source_file="res://Sprites/spider.png"
-source_md5="26d2a934e4f819ed83e22a2c8ba67d51"
+source_file="res://Sprites/dynamite_unlit.png"
+source_md5="21639483b266e7d16a5ffbc759e023ba"
 
-dest_files=[ "res://.import/spider.png-117fa22eec6d05fc38563d3488e6823e.stex" ]
-dest_md5="5f85662e1ed57b23f6149060970354eb"
+dest_files=[ "res://.import/dynamite_unlit.png-a88246a7bf638772ebc4849f5624d513.stex" ]
+dest_md5="941933867e89daa6820373f2681b8968"
 
 [params]
 

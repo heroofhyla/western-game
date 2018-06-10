@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-117fa22eec6d05fc38563d3488e6823e.stex"
+path="res://.import/explosion.png-03dbcc1860a0b88a11042db44c8cc013.stex"
 
 [deps]
 
-source_file="res://Sprites/spider.png"
-source_md5="26d2a934e4f819ed83e22a2c8ba67d51"
+source_file="res://Sprites/explosion.png"
+source_md5="ba40b46259d85b624fb54a99c7a817a4"
 
-dest_files=[ "res://.import/spider.png-117fa22eec6d05fc38563d3488e6823e.stex" ]
-dest_md5="5f85662e1ed57b23f6149060970354eb"
+dest_files=[ "res://.import/explosion.png-03dbcc1860a0b88a11042db44c8cc013.stex" ]
+dest_md5="c08252232025905506418777c40cb3e7"
 
 [params]
 
