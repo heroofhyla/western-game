@@ -23,6 +23,9 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 	if velocity.x == 0:
 		facing *= -1
+		
+	
+	if $AnimationPlayer.assigned_animation != animations["walk"][facing]:
 		$AnimationPlayer.play(animations["walk"][facing])
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -30,9 +33,8 @@ func _physics_process(delta):
 #	pass
 
 
-func _on_Area2D_area_entered(area):
+func _on_ReceiveDamage_area_entered(area):
 	if area.is_in_group("damage_from_player"):
 		if area.get_parent().has_method("alert_hit"):
 			area.get_parent().alert_hit()
 		queue_free()
-
