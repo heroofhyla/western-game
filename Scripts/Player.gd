@@ -19,7 +19,7 @@ var old_facing = 1
 var old_state = "stand"
 var next_state = null
 var i = 1
-var has_gun = true
+var has_gun = false
 var has_high_jump = false
 var has_dynamite = false
 var has_key = false
@@ -58,6 +58,8 @@ var animations = {
 func acquire(powerup):
 	if powerup == "dynamite":
 		has_dynamite = true
+	elif powerup == "revolver":
+		has_gun = true
 	elif powerup == "max_hp":
 		max_hp += 1
 		set_hp(max_hp)
